@@ -3,7 +3,7 @@
 @startuml
 
 skinparam TitleFontColor FireBrick
-title USE CASE
+title STATE DIAGRAM
 
 P: PENDING
 P: Pending for result

@@ -1,0 +1,37 @@
+' https://www.jianshu.com/p/ca87dd10f437
+@startuml
+header Page Header
+title I'm title
+actor User order 1
+box "Offboard App" #ffff99
+participant "smartphone app" as app order 2
+end box
+participant "platform" as pf order 3
+participant "background management" as bm order 4
+actor Admin order 5
+
+autonumber
+==create activity==
+Admin -[#blue]>bm: Admin input the activity through the bm
+activate bm
+bm->pf: Request upload activity (picture or video) (activityInfo, uid)
+activate pf 
+pf-->bm: Response return the save result and status
+deactivate pf 
+bm -[#blue]-> Admin: Show the result to admin 
+deactivate bm 
+
+== read activity==
+group job 
+
+User -[#blue]> app: User open the activity's page
+activate app
+app->pf: Request get the activity
+activate pf 
+pf --> app: Response the result 
+deactivate pf
+app -[#blue]-> User: Show the activity to User
+deactivate app
+
+end
+@enduml
