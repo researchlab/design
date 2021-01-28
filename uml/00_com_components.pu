@@ -1,0 +1,28 @@
+@startuml
+package "P0 Group" {
+    [P0]
+}
+
+package "P2 group" {
+    interface "  HTTP" as http1
+    interface HTTP as http2
+    http1 - [P1\n] 
+    [P0] -> http1
+    [P1\n] -> http2 
+    http2 - [P3]
+}
+database "P4 storage" {
+    [P0] -right--> http : "create snapshot"
+    http -- [ P4\n(disk file)]
+    [P3] -right-> [ P4\n(disk file)] : "vddk write"
+
+}
+
+node "VMware"{
+    interface " vSphere API " as api 
+    api - [vCenter\n]
+    [P3] --> api
+}
+
+
+@enduml 

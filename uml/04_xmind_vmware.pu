@@ -1,0 +1,46 @@
+@startmindmap
+* vmware
+** client  
+** external_client
+*** datacenter
+****_ GetDataCenters
+*****_ 1. c = NewClient
+*****_ 2. m = view.NewManager(c.client)
+*****_ 3. v = m.CreateContainerView
+*****_ 4. v.Retrieve
+****_ GetDefaultDataCenter
+*** datastores 
+****_ GetDataStores
+*** hosts
+****_ GetHosts
+*** snapshot
+****_ PreSnapshot
+****_ CreateSnapshot
+****_ QueryChangeId
+****_ QueryChangedDiskAreas
+****_ RemoveSnapshot
+****_ RemoveSnapshots
+*** transport
+****_ ?
+*** vdisk 
+****_ C
+*****_ Connect
+*****_ Disconnect
+*****_ Open
+*****_ Read
+*****_ Close
+*****_ Init 
+*****_ Exit
+*** virtualmachines
+****_ GetVirtualMachines
+****_ GetVirtualMachineByUuid
+****_ GetVirtualMachineByHost
+****_ EnableChangeTracking
+****_ DisableChangeTracking
+** server 
+*** datahandler
+*** rpchandler
+left side
+** config
+** utils
+@endmindmap

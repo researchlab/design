@@ -1,0 +1,33 @@
+' reference: https://www.meiwen.com.cn/subject/cbdgpctx.html
+' reference: https://plantuml.com/zh/skinparam
+@startuml
+
+skinparam TitleFontColor FireBrick
+title USE CASE
+
+P: PENDING
+P: Pending for result
+
+N: NO_RESULT_YET
+N: Did not send the KYC check yet 
+
+Y: APPROVED
+Y: KYC check successful
+
+R: REJECTED
+R: KYC check found the applicant's
+R: information not correct 
+
+X: EXPIRED
+X: Proof of Address (POA) too old 
+
+[*] --> N : Card application received
+N --> P : Submitted the KYC check
+P --> Y
+P --> R
+P --> X : Proof of Address (POA) too old
+P --> X : explicitly by KYC
+Y --> [*]
+R --> [*]
+X --> [*]
+@enduml

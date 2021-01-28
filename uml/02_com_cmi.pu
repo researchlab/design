@@ -1,0 +1,17 @@
+@startuml
+[web] .right.> () HTTP : use(port:8080)
+HTTP -- [P0]
+[P0] .left.> MySQL : use(port:3306)
+interface RPC as P0RPC
+P0RPC -up- [P0]
+[P1] .left.> P0RPC : use(port:9900)
+interface RPC as P1RPC 
+P1RPC -down- [P1]
+[P0] .right.> P1RPC : use(port:9901)
+interface RPC as vmwareRPC
+vmwareRPC -up- [vmware]
+[P1] .right.> vmwareRPC : use(port:9902)
+[vmware] .left.> P1RPC : use(port:9901)
+database "MySQL" {
+}
+@enduml

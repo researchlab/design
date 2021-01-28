@@ -1,0 +1,47 @@
+@startUML EBook Use Case Diagram
+skinparam linetype polyline
+left to right direction
+Actor Customer as customer
+Actor EBook as ebook
+Actor Publisher as publisher
+rectangle "Book Catalogue" {
+    together {
+        Actor "Book Database" as bookLog
+        (Retrieve Information) as getBook
+        customer -- getBook
+        getBook -- ebook
+        getBook -- bookLog
+
+        (Update Catalogue) as updateCatalogue
+        ebook -- updateCatalogue
+        updateCatalogue -- bookLog
+    }
+
+    together {
+        (Place Order) as order
+        customer -- order
+        order -- ebook
+        order--publisher
+
+        (Cancel Order) as cancelOrder
+        customer -- cancelOrder
+        cancelOrder -- ebook
+        cancelOrder--publisher
+    }
+}
+
+(Ship To EBook) as shipEBook
+shipEBook -- publisher
+(Ship To Customer) as shipCustomer
+customer -- shipCustomer
+ebook -- shipEBook
+shipCustomer -- ebook
+
+(Return to EBook) as returnCustomer
+(Returnto Publisher) as returnPublisher
+customer -- returnCustomer
+returnCustomer -- ebook
+ebook -- returnPublisher
+returnPublisher -- publisher
+
+@endUML
